@@ -1,0 +1,24 @@
+---
+- name: Make cache dir
+  ansible.builtin.file:
+    state: directory
+    path: "{{ cache_dir }}"
+    mode: '744'
+
+- name: Download kernel packages
+  loop: "{{ ubuntu_kernel_packages  }}"
+  ansible.builtin.get_url:
+    url: "{{ ubuntu_kernel_url }}/{{ item }}"
+    dest: "{{ cache_dir }}/{{ item }}"
+
+- name: Install kernel packages
+  become: true
+  loop: "{{ ubuntu_kernel_packages }}"
+  ansible.builtin.apt:
+    deb: "{{ cache_dir }}/{{ item }}"
+    force: true
+
+- name: Reboot
+  become: true
+  ansible.builtin.reboot:
+...

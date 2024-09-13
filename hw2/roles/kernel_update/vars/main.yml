@@ -1,0 +1,9 @@
+---
+cache_dir: "{{ ansible_facts.env.HOME }}/cache"
+ubuntu_kernel_url: https://kernel.ubuntu.com/mainline/v5.16.11/amd64
+ubuntu_kernel_packages:
+  - linux-headers-5.16.11-051611-generic_5.16.11-051611.202202230823_amd64.deb
+  - linux-headers-5.16.11-051611_5.16.11-051611.202202230823_all.deb
+  - linux-image-unsigned-5.16.11-051611-generic_5.16.11-051611.202202230823_amd64.deb
+  - linux-modules-5.16.11-051611-generic_5.16.11-051611.202202230823_amd64.deb
+...

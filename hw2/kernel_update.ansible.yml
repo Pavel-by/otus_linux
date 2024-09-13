@@ -1,0 +1,6 @@
+---
+- name: Update kernel
+  hosts: all
+  roles:
+  - kernel_update
+...
